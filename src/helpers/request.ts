@@ -29,7 +29,7 @@ export const curl = (
     curl.on("error", (error) => {
       curl.close();
       console.log("Got an error (on error)", error);
-      return resolve({ httpCode: 0, totalTime: 0, data: "" });
+      return resolve({ httpCode, totalTime, data });
     });
     curl.on("end", (_, data) => {
       if (typeof data !== "string") data = data.toString();
