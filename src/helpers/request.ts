@@ -28,7 +28,7 @@ export const curl = (
     curl.setOpt("CUSTOMREQUEST", method);
     curl.on("error", (error) => {
       curl.close();
-      console.log("Got an error (on error)", error);
+      console.log("Got an errobr (on error)", error);
       return resolve({ httpCode, totalTime, data });
     });
     curl.on("end", (_, data) => {
