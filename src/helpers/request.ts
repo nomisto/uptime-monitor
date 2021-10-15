@@ -40,7 +40,7 @@ export const curl = (
         totalTime = Number(curl.getInfo("TOTAL_TIME"));
       } catch (error) {
         curl.close();
-        console.log("Got an error (on end)", error);
+        console.log("Got an eor (on end)", error);
         return resolve({ httpCode, totalTime, data });
       }
       if (httpCode === 0 || totalTime === 0) console.log("Didn't get an error but got 0s");
