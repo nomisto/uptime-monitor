@@ -27,7 +27,7 @@ const curl = (site) => new Promise((resolve) => {
     curl.setOpt("CUSTOMREQUEST", method);
     curl.on("error", (error) => {
         curl.close();
-        console.log("Got an error (on error)", error);
+        console.log("Got an errobr (on error)", error);
         return resolve({ httpCode: 0, totalTime: 0, data: "" });
     });
     curl.on("end", (_, data) => {
@@ -41,7 +41,7 @@ const curl = (site) => new Promise((resolve) => {
         }
         catch (error) {
             curl.close();
-            console.log("Got an error (on end)", error);
+            console.log("Got an eor (on end)", error);
             return resolve({ httpCode, totalTime, data });
         }
         if (httpCode === 0 || totalTime === 0)
