@@ -28,6 +28,7 @@ const curl = (site) => new Promise((resolve) => {
     curl.on("error", (error) => {
         curl.close();
         console.log("Got an errobr (on error)", error);
+        console.log(curl.getInfo("RESPONSE_CODE"));
         return resolve({ httpCode: 0, totalTime: 0, data: "" });
     });
     curl.on("end", (_, data) => {
