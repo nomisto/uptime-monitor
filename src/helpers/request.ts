@@ -27,10 +27,11 @@ export const curl = (
     curl.setOpt("VERBOSE", false);
     curl.setOpt("CUSTOMREQUEST", method);
     curl.on("error", (error) => {
-      curl.close();
+      
       console.log("Got an errobr (on error)", error);
       console.log(curl.getInfo("RESPONSE_CODE"));
-      return resolve({ httpCode: 0, totalTime: 0, data: "" });
+     curl.close();
+ return resolve({ httpCode: 0, totalTime: 0, data: "" });
     });
     curl.on("end", (_, data) => {
       if (typeof data !== "string") data = data.toString();
