@@ -25,7 +25,7 @@ export const curl = (
     curl.setOpt("TIMEOUT", 30);
     curl.setOpt("HEADER", 1);
     curl.setOpt("VERBOSE", false);
-    if (method == "HEAD){
+    if (method == "HEAD"){
       curl.setOpt("NOBODY", true);
     } else {   
       curl.setOpt("CUSTOMREQUEST", method);
