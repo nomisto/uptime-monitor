@@ -190,8 +190,8 @@ ${config.summaryEndHtmlComment || "<!--end: status pages-->"}${endText}`;
     await fs_extra_1.writeJson(path_1.join(".", "history", "summary_badge.json"), {
         schemaVersion: 1,
         label: "Upptime",
-        message: i18n.allSystemsOperational ? "passing" : "failing",
-        color: i18n.allSystemsOperational ? "brightgreen" : "red",
+        message: (numberOfDown === 0 && numberOfDegraded === 0) ? "passing" : "failing",
+        color: (numberOfDown === 0 && numberOfDegraded === 0) ? "brightgreen" : "red",
     });
     git_1.commit((config.commitMessages || {}).readmeContent ||
         ":pencil: Update summary in README [skip ci] [upptime]", (config.commitMessages || {}).commitAuthorName, (config.commitMessages || {}).commitAuthorEmail);
