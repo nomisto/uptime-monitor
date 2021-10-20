@@ -303,6 +303,14 @@ ${config.summaryEndHtmlComment || "<!--end: status pages-->"}${endText}`;
     .join("\n");
 
   await writeFile(join(".", "README.md"), format(readmeContent, { parser: "markdown" }));
+ 
+  await writeJson(join(".", "history", "summary_badge.json"), {
+      schemaVersion: 1,
+      label: "Upptime",
+      message: i18n.allSystemsOperational ? "passing" : "failing" ,
+      color: i18n.allSystemsOperational ? "brightgreen" : "red",
+    });
+  
   commit(
     (config.commitMessages || {}).readmeContent ||
       ":pencil: Update summary in README [skip ci] [upptime]",
