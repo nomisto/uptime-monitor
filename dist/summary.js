@@ -187,6 +187,12 @@ ${config.summaryEndHtmlComment || "<!--end: status pages-->"}${endText}`;
     })
         .join("\n");
     await fs_extra_1.writeFile(path_1.join(".", "README.md"), prettier_1.format(readmeContent, { parser: "markdown" }));
+    await fs_extra_1.writeJson(path_1.join(".", "history", "summary_badge.json"), {
+        schemaVersion: 1,
+        label: "Upptime",
+        message: i18n.allSystemsOperational ? "passing" : "failing",
+        color: i18n.allSystemsOperational ? "brightgreen" : "red",
+    });
     git_1.commit((config.commitMessages || {}).readmeContent ||
         ":pencil: Update summary in README [skip ci] [upptime]", (config.commitMessages || {}).commitAuthorName, (config.commitMessages || {}).commitAuthorEmail);
     // If there are any old workflows left, fix them
