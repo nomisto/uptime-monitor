@@ -307,8 +307,8 @@ ${config.summaryEndHtmlComment || "<!--end: status pages-->"}${endText}`;
   await writeJson(join(".", "history", "summary_badge.json"), {
       schemaVersion: 1,
       label: "Upptime",
-      message: i18n.allSystemsOperational ? "passing" : "failing" ,
-      color: i18n.allSystemsOperational ? "brightgreen" : "red",
+      message: (numberOfDown === 0 and numberOfDegraded === 0) ? "passing" : "failing" ,
+      color: (numberOfDown === 0 and numberOfDegraded === 0) ? "brightgreen" : "red",
     });
   
   commit(
