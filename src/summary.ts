@@ -1,5 +1,5 @@
 import slugify from "@sindresorhus/slugify";
-import { mkdirp, readdir, readFile, writeFile } from "fs-extra";
+import { mkdirp, readdir, readFile, writeFile, writeJson } from "fs-extra";
 import { join } from "path";
 import { format } from "prettier";
 import { getResponseTimeForSite } from "./helpers/calculate-response-time";
