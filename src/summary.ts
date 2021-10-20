@@ -1,5 +1,5 @@
 import slugify from "@sindresorhus/slugify";
-import { mkdirp, readdir, readFile, writeFile, writeJson } from "fs-extra";
+import { mkdirp, readdir, readFile, writeFile } from "fs-extra";
 import { join } from "path";
 import { format } from "prettier";
 import { getResponseTimeForSite } from "./helpers/calculate-response-time";
@@ -303,13 +303,6 @@ ${config.summaryEndHtmlComment || "<!--end: status pages-->"}${endText}`;
     .join("\n");
 
   await writeFile(join(".", "README.md"), format(readmeContent, { parser: "markdown" }));
- 
-  await writeJson(join(".", "history", "summary_badge.json"), {
-      schemaVersion: 1,
-      label: "Upptime",
-      message: (numberOfDown === 0 && numberOfDegraded === 0) ? "passing" : "failing" ,
-      color: (numberOfDown === 0 && numberOfDegraded === 0) ? "brightgreen" : "red",
-    });
   
   commit(
     (config.commitMessages || {}).readmeContent ||
